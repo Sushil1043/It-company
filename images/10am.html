@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="prefetch" href="https://api.postalpincode.in">
+    <title>Hello JS</title>
+    <style>
+        *,::before,::after{ margin: 0; box-sizing: border-box;}
+        a{ text-decoration: none;}
+        label{ display: inline-block;}
+        button{cursor: pointer; }
+        [disabled]{ cursor:not-allowed; opacity: 0.5;}
+
+        html{ font-size: 15px; scroll-behavior: smooth; }
+        html.darkmode{ color-scheme: dark; }
+        body{ 
+           font: 16px/1.2 system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+      
+        .container{
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 10px;
+        }
+         input[type="text"], select{ text-transform: capitalize; padding: 10px; height: 38px; border: 1px solid #888; border-radius: 5px; background: transparent; color: inherit; margin: 5px 0; vertical-align: middle;}
+        .btn{ vertical-align: middle; font-size: 1rem; margin: 5px 0; border: 1px solid #888; padding: 5px 12px; background: transparent; border-radius: 5px; display: inline-block; color: inherit; height: 36px;}
+        .btn:enabled:active{ background: #333; color: #fff;}
+
+        .box{ margin: 1rem 0; padding: 1rem; border: 1px solid #000; height: 255px;}
+        
+        header, main, footer{ padding: 1rem;}
+       
+        .clock{ 
+            width: 300px;
+            aspect-ratio: 1/1;
+            background: url(img/dial.svg) no-repeat;
+            position: relative;
+        }
+        .sec,.min,.hour{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform-origin: left center;
+            transform: rotate(0deg);
+            
+        }
+        .sec{
+            height: 2px;
+            background: #000;
+            width: 44%;
+            margin-top: -1px;
+        }
+        .min{
+            height: 4px;
+            background: #f00;
+            width: 35%;
+            margin-top: -2px;
+        }
+        .hour{
+            height: 6px;
+            background: #00f;
+            width: 30%;
+            margin-top: -3px;
+        }
+        .dark{ float: right; }
+        .dark input{ vertical-align: middle;}
+</style>  
+</head> 
+<body>
+    <div class="container">
+        <label class="dark"><input type="checkbox">: Dark Mode </label>
+        <header>
+            <h1>JavaScript</h1>
+        </header>
+        <main>
+            <h2>Main</h2>
+        </main>
+        <footer>
+            <p>&copy; 2023</p>
+        </footer>
+    </div>
+<script>
+    "use strict";
+
+    const pi=Math.PI;
+
+    //console.log(pi);
+
+    //console.log( Math.abs(-3) );
+    //console.log( Math.ceil(1.2) );
+    //console.log( Math.floor(1.1) );
+    //console.log( Math.round(1.5) );
+    
+    //console.log(Math.sin(30 * Math.PI/180 ));
+    //console.log( Math.ceil(Math.random()*6) );
+    //console.log("This color is %cred","color:aqua; font-size:30px"); 
+    //console.assert( 1===true );
+
+    
+    document.cookie="name=lorem ipsum";
+    document.cookie="id=22";
+    document.cookie="city=noida; expires=Sat, 14 Oct 2023 10:00:00 GMT";
+    document.cookie="pin=201301; max-age=5";
+
+/* 
+    if( document.cookie.length>0){
+        console.log( document.cookie );
+    }
+    else{
+        console.log("no cookies");
+    } */
+    
+    //document.cookie.split("; ").forEach(i=>console.log(i.split("=")[0],i.split("=")[1]))
+
+    document.querySelector(".dark input").addEventListener("change",function(){
+        if( this.checked==true){
+            document.querySelector("html").classList.add("darkmode");
+            document.cookie="mode=dark";
+        }
+        else{
+            document.querySelector("html").classList.remove("darkmode");
+        }
+    });
+
+
+{
+    const mode=document.cookie.split("; ").forEach(i=>{
+        console.log(i);
+        if( i=="mode=dark"){ 
+            document.querySelector("html").classList.add("darkmode");
+            document.querySelector(".dark input").checked=true
+        }
+        else{
+            //document.querySelector("html").classList.remove("darkmode");
+        }
+    })
+}
+</script>
+</body>
+</html>
